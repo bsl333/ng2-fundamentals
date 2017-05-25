@@ -7,14 +7,15 @@ import { Component } from '@angular/core';
     <div>
         <h1>Upcoming Angular 2 Events</h1>
         <hr/>
-        <event-thumbnail [event]="event1"></event-thumbnail>
+        <event-thumbnail (eventClicked)="handleEventClicked($event)"
+        [event]="event1"></event-thumbnail>
     </div>
     `
 })
 
 export class EventsListComponent {
-    
-    private event1: object = { 
+    private someEvent: string;
+    private event1 = { 
         id: 1,
         name: 'Angular Connect',
         date: '9/26/2036',
@@ -27,4 +28,9 @@ export class EventsListComponent {
             country: 'England'
         }
     };
+
+    handleEventClicked(data){
+        this.someEvent = data;
+        console.log(this.someEvent)
+    }
 }
